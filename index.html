@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no" />
+<meta name="theme-color" content="#F4F4F9" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="mobile-web-app-capable" content="yes" />
+<title>Prism · 俄罗斯方块</title>
+<meta name="description" content="玻璃质感的俄罗斯方块。手机触屏、电脑键盘都能玩，打开链接就能开始，最高分记在这台设备上。" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="manifest" href="manifest.webmanifest" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="PRISM" />
+<meta property="og:title" content="PRISM · 俄罗斯方块" />
+<meta property="og:description" content="玻璃质感的俄罗斯方块。打开链接就能玩，不用下载。" />
+<meta property="og:image" content="assets/share.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PRISM · 俄罗斯方块" />
+<meta name="twitter:description" content="玻璃质感的俄罗斯方块。打开链接就能玩，不用下载。" />
+<meta name="twitter:image" content="assets/share.png" />
+<link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1.8"/><rect x="14" y="5" width="4" height="14" rx="1.8"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.53.85l10-6.5a1 1 0 0 0 0-1.7l-10-6.5A1 1 0 0 0 8 5.5z"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M11 5 6.6 8.6H3.8A1.3 1.3 0 0 0 2.5 9.9v4.2a1.3 1.3 0 0 0 1.3 1.3h2.8L11 19z"/><path d="M15.2 8.6a4.6 4.6 0 0 1 0 6.8"/><path d="M18.2 5.8a8.8 8.8 0 0 1 0 12.4"/></symbol>
+    <symbol id="i-muted" viewBox="0 0 24 24"><path d="M11 5 6.6 8.6H3.8A1.3 1.3 0 0 0 2.5 9.9v4.2a1.3 1.3 0 0 0 1.3 1.3h2.8L11 19z"/><path d="M15.5 9.5 21 15"/><path d="M21 9.5 15.5 15"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M14.5 6 8.5 12l6 6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9.5 12 15.5 18 9.5"/></symbol>
+    <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 3.6v5h-5"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.5v11"/><path d="M7.6 10.2 12 14.6l4.4-4.4"/><path d="M5 20.2h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6.5 6.5 17.5 17.5"/><path d="M17.5 6.5 6.5 17.5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 10.8 12 4l8 6.8V19a1.2 1.2 0 0 1-1.2 1.2h-4.2v-6H9.4v6H5.2A1.2 1.2 0 0 1 4 19z"/></symbol>
+    <symbol id="i-restart" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 3.6v5h-5"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.4 14.6A8.6 8.6 0 0 1 9.4 3.6a8.6 8.6 0 1 0 11 11z"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3.6v10.2"/><path d="M8.4 6.8 12 3.2l3.6 3.6"/><path d="M6 11.6H4.9A1.3 1.3 0 0 0 3.6 12.9v6.4a1.3 1.3 0 0 0 1.3 1.3h14.2a1.3 1.3 0 0 0 1.3-1.3v-6.4a1.3 1.3 0 0 0-1.3-1.3H18"/></symbol>
+    <symbol id="i-auto" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 1 0 16.4z" fill="currentColor" stroke="none"/></symbol>
+  </defs>
+</svg>
+
+<div class="bg" aria-hidden="true">
+  <span class="blob blob-a"></span>
+  <span class="blob blob-b"></span>
+  <span class="blob blob-c"></span>
+  <span class="grain"></span>
+</div>
+
+<main id="app">
+
+  <section class="screen" id="screen-home">
+    <div class="home">
+      <div class="home-top">
+        <button id="btnShare" class="icon-btn subtle" aria-label="分享给朋友">
+          <svg class="ico"><use href="#i-share"/></svg>
+        </button>
+        <button id="btnTheme" class="icon-btn subtle" aria-label="切换外观" data-mode="auto">
+          <svg class="ico theme-ico theme-auto"><use href="#i-auto"/></svg>
+          <svg class="ico theme-ico theme-light"><use href="#i-sun"/></svg>
+          <svg class="ico theme-ico theme-dark"><use href="#i-moon"/></svg>
+        </button>
+      </div>
+
+      <div class="brand">
+        <div class="logo">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <defs>
+              <linearGradient id="lg-a" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#7DD8FF"/><stop offset="1" stop-color="#2E9DFF"/>
+              </linearGradient>
+              <linearGradient id="lg-b" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#C6A0FF"/><stop offset="1" stop-color="#8E63F5"/>
+              </linearGradient>
+              <linearGradient id="lg-c" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#FFC46B"/><stop offset="1" stop-color="#FF8A3D"/>
+              </linearGradient>
+            </defs>
+            <rect x="13" y="13" width="33" height="33" rx="10" fill="url(#lg-a)"/>
+            <rect x="54" y="13" width="33" height="33" rx="10" fill="url(#lg-b)"/>
+            <rect x="13" y="54" width="33" height="33" rx="10" fill="url(#lg-c)"/>
+            <rect x="54" y="54" width="33" height="33" rx="10" fill="rgba(255,255,255,0.28)" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h1 class="wordmark-xl">PRISM</h1>
+        <p class="tagline">俄罗斯方块</p>
+      </div>
+
+      <div class="home-card glass">
+        <div class="home-stat">
+          <span>最高分</span>
+          <strong id="homeBest">0</strong>
+        </div>
+        <div class="v-divider"></div>
+        <div class="home-stat">
+          <span>最佳消除</span>
+          <strong id="homeLines">0</strong>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="btnStart">
+        <span>开始游戏</span>
+      </button>
+
+      <div class="settings-row">
+        <button class="chip-toggle on" id="tgSound">
+          <span class="chip-dot"></span>
+          <span class="chip-label">音效</span>
+          <i class="switch"><b></b></i>
+        </button>
+        <button class="chip-toggle on" id="tgHaptic">
+          <span class="chip-dot"></span>
+          <span class="chip-label">触感</span>
+          <i class="switch"><b></b></i>
+        </button>
+      </div>
+
+      <p class="hint hint-touch">左右滑动移动 · 轻点旋转 · 下滑加速</p>
+      <p class="hint kbd-hint">← → 移动 · ↑ / X 旋转 · ↓ 加速 · 空格直落 · C 暂存</p>
+      <p class="version">PRISM 1.0.4 · WEB</p>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-game">
+    <header class="topbar">
+      <button id="btnPause" class="icon-btn" aria-label="暂停">
+        <svg class="ico ico-fill"><use href="#i-pause"/></svg>
+      </button>
+      <div class="wordmark-sm">PRISM</div>
+      <button id="btnSound" class="icon-btn" aria-label="关闭音效">
+        <svg class="ico sound-on"><use href="#i-sound"/></svg>
+        <svg class="ico sound-off"><use href="#i-muted"/></svg>
+      </button>
+    </header>
+
+    <div class="stats">
+      <div class="stat glass"><span>分数</span><b id="statScore">0</b></div>
+      <div class="stat glass"><span>等级</span><b id="statLevel">1</b></div>
+      <div class="stat glass"><span>消除</span><b id="statLines">0</b></div>
+    </div>
+
+    <div class="play-area" id="playArea">
+      <div class="board-wrap" id="boardWrap">
+        <canvas id="board" width="300" height="600"></canvas>
+        <div class="fx" id="fx"></div>
+      </div>
+      <aside class="rail glass" id="rail">
+        <button class="rail-hold" id="holdCard" aria-label="暂存方块">
+          <span class="rail-label">HOLD</span>
+          <div class="hold-slot">
+            <span class="hold-empty" aria-hidden="true"></span>
+            <canvas id="holdCanvas" class="preview"></canvas>
+          </div>
+        </button>
+        <div class="rail-line"></div>
+        <div class="rail-next">
+          <span class="rail-label">NEXT</span>
+          <div class="next-stack" id="nextStack">
+            <canvas class="preview"></canvas>
+            <canvas class="preview"></canvas>
+            <canvas class="preview"></canvas>
+            <canvas class="preview"></canvas>
+            <canvas class="preview"></canvas>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="controls">
+      <button class="ctrl" data-act="left" aria-label="左移"><svg class="ico"><use href="#i-left"/></svg></button>
+      <button class="ctrl" data-act="down" aria-label="下移"><svg class="ico"><use href="#i-down"/></svg></button>
+      <button class="ctrl primary" data-act="rotate" aria-label="旋转"><svg class="ico"><use href="#i-rotate"/></svg></button>
+      <button class="ctrl" data-act="right" aria-label="右移"><svg class="ico"><use href="#i-right"/></svg></button>
+      <button class="ctrl" data-act="drop" aria-label="硬降"><svg class="ico"><use href="#i-drop"/></svg></button>
+    </div>
+    <p class="hint kbd-hint kbd-hint-game">← → 移动 · ↑ 旋转 · ↓ 加速 · 空格直落 · C 暂存 · P 暂停</p>
+  </section>
+
+  <div class="overlay" id="overlay">
+    <div class="scrim"></div>
+
+    <div class="sheet" id="sheetPause">
+      <div class="handle"></div>
+      <h2>已暂停</h2>
+      <p class="sheet-sub">休息一下，随时继续</p>
+      <div class="sheet-stats">
+        <div class="mini-stat"><span>分数</span><b id="pauseScore">0</b></div>
+        <div class="mini-stat"><span>等级</span><b id="pauseLevel">1</b></div>
+        <div class="mini-stat"><span>消除</span><b id="pauseLines">0</b></div>
+      </div>
+      <button class="btn-primary" id="btnResume"><span>继续游戏</span></button>
+      <button class="btn-secondary" id="btnRestartPause">
+        <svg class="ico"><use href="#i-restart"/></svg>
+        <span>重新开始</span>
+      </button>
+      <button class="btn-text" id="btnQuit">返回首页</button>
+    </div>
+
+    <div class="sheet" id="sheetOver">
+      <div class="handle"></div>
+      <div class="badge" id="overBadge">新纪录</div>
+      <h2>游戏结束</h2>
+      <div class="final">
+        <span>最终得分</span>
+        <b id="overScore">0</b>
+      </div>
+      <div class="sheet-stats">
+        <div class="mini-stat"><span>消除</span><b id="overLines">0</b></div>
+        <div class="mini-stat"><span>等级</span><b id="overLevel">1</b></div>
+        <div class="mini-stat"><span>最高分</span><b id="overBest">0</b></div>
+      </div>
+      <button class="btn-primary" id="btnPlayAgain"><span>再来一局</span></button>
+      <button class="btn-secondary" id="btnShareScore">
+        <svg class="ico"><use href="#i-share"/></svg>
+        <span>分享成绩</span>
+      </button>
+      <button class="btn-text" id="btnHome">返回首页</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</main>
+
+<script src="js/engine.js"></script>
+<script src="js/render.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
+
+
+
